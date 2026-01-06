@@ -1,3 +1,33 @@
-git rm -r --cached .idea/
-git rm -r --cached chroma_books/
-git rm -r --cached __pycache__/
+# IDE settings
+.idea/
+.vscode/
+
+# Chroma database
+chroma_books/
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+*~
+
