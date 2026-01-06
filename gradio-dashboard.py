@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from dotenv import load_dotenv
 
 from langchain_community.document_loaders import TextLoader
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -9,8 +8,6 @@ from langchain_chroma import Chroma
 from langchain_core.documents import Document
 
 import gradio as gr
-
-load_dotenv()
 
 books = pd.read_csv("books_with_emotions.csv")
 books["large_thumbnail"] = books["thumbnail"] + "&fife=w800"
@@ -21,9 +18,10 @@ books["large_thumbnail"] = np.where(
 )
 
 loader = TextLoader(
-    r"C:\Users\shiwa\PycharmProjects\book-recommender\tagged_description.txt",
+         "tagged_description.txt",
     encoding="utf-8"
 )
+
 raw_documents = loader.load()
 
 # chunk_size=1 will split ONLY on \n, keeping each line intact
@@ -150,4 +148,4 @@ with gr.Blocks(theme = gr.themes.Glass()) as dashboard:
 
 
 if __name__ == "__main__":
-    dashboard.launch()
+    dashboard.launch(server_name="0.0.0.0", server_port=7860)
